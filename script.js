@@ -23,6 +23,7 @@ let frameX = 0;
 let frameY = 0;
 
 let gameFrame = 0;
+const staggerFrames = 10;
 
 
 // function to start animation loop
@@ -37,13 +38,18 @@ function animate() {
     // ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
     ctx.drawImage(playerImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
 
-    // set up if statement to cycle through animation frames
+    
+    // if statement to slow down the frame rate 
+    if(gameFrame % staggerFrames == 0){
 
-    if(frameX < 6) frameX++;
-    else frameX = 0;
+        // set up if statement to cycle through animation frames
+        if(frameX < 6) frameX++;
+        else frameX = 0;
+    }
+
     
     
-
+    gameFrame++;
     // run a function we pass to it, since I'm calling the animate function it will run it over and over. 
     requestAnimationFrame(animate);
 
