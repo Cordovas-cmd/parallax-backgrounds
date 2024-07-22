@@ -12,15 +12,24 @@ const CANVAS_HEIGHT = canvas.height = 600;
 // bring image in to JS
 const playerImage = new Image();
 playerImage.src = './images/shadow_dog.png';
-let x = 0;
+
+
+// for a sprite sheet take width of entire file and divide it by number of columns to get the width of one "sprite" for sprite Height, get height of the file and divide it by number of rows
+const spriteWidth = 575;
+const spriteHeight = 525;
+
 
 // function to start animation loop
 function animate() {
     // clear whole canvas
     ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-    ctx.fillRect(x,50,100,100);
-    x++
+    // ctx.fillRect(100,50,100,100);
+
+    // draw image method can take 3, 5, or 9 arguments depending on how much control you want to have in this case it's just the image variable, and the x y coordinates
+
+    // ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
+    ctx.drawImage(playerImage, 0, 0, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
     
 
     // run a function we pass to it, since I'm calling the animate function it will run it over and over. 
