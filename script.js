@@ -19,6 +19,12 @@ const spriteWidth = 575;
 const spriteHeight = 525;
 
 
+let frameX = 0;
+let frameY = 0;
+
+let gameFrame = 0;
+
+
 // function to start animation loop
 function animate() {
     // clear whole canvas
@@ -29,7 +35,13 @@ function animate() {
     // draw image method can take 3, 5, or 9 arguments depending on how much control you want to have in this case it's just the image variable, and the x y coordinates
 
     // ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-    ctx.drawImage(playerImage, 0, 0, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+    ctx.drawImage(playerImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+
+    // set up if statement to cycle through animation frames
+
+    if(frameX < 6) frameX++;
+    else frameX = 0;
+    
     
 
     // run a function we pass to it, since I'm calling the animate function it will run it over and over. 
